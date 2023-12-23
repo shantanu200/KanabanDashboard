@@ -21,3 +21,7 @@ export interface ICompleteData {
 export interface IGroupedPriority {
   [key: string]: ITicket[];
 }
+
+export interface IGroupedUser {
+  [key: string]: string;
+}

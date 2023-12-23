@@ -1,4 +1,4 @@
-import { IGroupedPriority, ITicket } from "../IData";
+import { IGroupedPriority, IGroupedUser, ITicket, IUser } from "../IData";
 
 export const filterByStatus = (data: ITicket[]) => {
   return data?.reduce((groupedTasks, task) => {
@@ -39,4 +39,12 @@ export const filterByUser = (data: ITicket[]) => {
     groupedTasks[userId].push(task);
     return groupedTasks;
   }, {} as Record<string, ITicket[]>);
+};
+
+export const mapUser = (data: IUser[]) => {
+  return data?.reduce((groupedUsers, user) => {
+    const userId = user.id;
+    groupedUsers[userId] = user.name;
+    return groupedUsers;
+  }, {} as IGroupedUser);
 };

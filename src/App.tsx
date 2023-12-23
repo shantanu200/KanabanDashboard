@@ -34,9 +34,7 @@ function App() {
       <div className='p-4'>
         <DropDown order={order} group={group} setGroup={setGroup} setOrder={setOrder} />
       </div>
-      <div className='w-full bg-gray-200'>
         <CardView data={completeData} action={group || 'priority'} order={order} />
-      </div>
     </main>
   )
 }
