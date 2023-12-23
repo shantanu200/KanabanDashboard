@@ -2,6 +2,7 @@ import React, { useEffect, useReducer, useState } from 'react'
 import Card from './common/Card'
 import { ICompleteData, IGroupedPriority, IGroupedUser, IUser } from './IData';
 import { filterByPriority, filterByStatus, filterByUser, mapUser } from './Functions/DataModulation';
+import { EllipsisHorizontalIcon, PlusIcon } from '@heroicons/react/20/solid';
 
 interface ICardViewProps {
     data: ICompleteData;
@@ -44,11 +45,17 @@ const CardView: React.FC<ICardViewProps> = (props) => {
     }, [data, action]);
 
     return (
-        <section className='grid w-full min-h-screen grid-cols-3 gap-4 p-4 bg-gray-100 lg:grid-cols-5'>
+        <section className='grid w-full min-h-screen grid-cols-1 gap-4 p-4 bg-gray-100 sm:grid-cols-2 lg:grid-cols-5'>
             {Object.keys(cardData || {}).map((key, id: number) => {
                 return (
                     <div>
-                        <h1 className='my-2 text-lg font-semibold text-gray-600'>{action == "user" ? data.users[id].name : key} <span className='ml-4 text-gray-400'>{cardData![key].length}</span></h1>
+                        <div className='flex items-center justify-between'>
+                            <h1 className='my-2 text-lg font-semibold text-gray-600'>{action == "user" ? data.users[id].name : key} <span className='ml-4 text-gray-400'>{cardData![key].length}</span></h1>
+                            <div className='flex items-center gap-4'>
+                                <PlusIcon className='w-4 h-4 text-gray-400'/>
+                                <EllipsisHorizontalIcon className='w-4 h-4 text-gray-400'/>
+                            </div>
+                        </div>
                         {order === "title" ? cardData![key].sort((a, b) => {
                             if (a.title < b.title) { return -1; }
                             else { return 1; }

@@ -18,7 +18,7 @@ const Card: React.FC<ICardProps> = (props) => {
     }
     // console.log(user[data.userId]);
     return (
-        <div className='p-4 my-4 bg-white rounded-lg'>
+        <div className='p-4 my-4 bg-white rounded-lg shadow-lg'>
             <div>
                 <div className='flex items-center justify-between'>
                     <h3 className='text-sm text-gray-500'>{data.id}</h3>
